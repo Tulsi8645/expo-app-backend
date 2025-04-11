@@ -16,6 +16,7 @@ app.use(cors());
 app.use(router);
 
 
+await connectDB();
 
 router.get("/", (req, res) => {
     res.status(200).json({msg: "Bookworm Api is running"})
@@ -195,5 +196,6 @@ router.delete("/api/book/delete/:id",protectRoute, async (req, res) => {
 
 app.listen(PORT, () => {
     console.log("Server is running on port " + PORT);
-    connectDB();
 });
+
+export default app; // ✅ Required by Vercel
